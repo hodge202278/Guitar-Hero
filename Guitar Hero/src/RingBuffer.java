@@ -3,13 +3,11 @@ import java.util.Queue;
 
 public class RingBuffer {
 	
-	private Queue<Double> ringBuffer = new LinkedList<>();
-	
-	private int capacity;
+	private double[] ringBuffer;
 
 	public RingBuffer(int capacity)
 	{
-		this.capacity = capacity;
+		ringBuffer = new double[capacity];
 	}
 	public int size()
 	{
