@@ -4,10 +4,17 @@ public class GuitarString {
 	public RingBuffer ringBuffer;
 	public int timesTicd;
 	
-	public GuitarString(double frequency)
+	public GuitarString(double frequency) throws IOException
 	{
 		// use a sampling rate of 44,100
-		ringBuffer = new RingBuffer((int) (44100 / frequency));
+		int capacity = (int) (44100 / frequency);
+		ringBuffer = new RingBuffer(capacity);
+		
+		for (int i = 0; i < capacity; i++)
+		{
+			ringBuffer.enqueue(0);
+		}
+		
 	}
 	
 	public GuitarString(double[] init) throws IOException
@@ -25,12 +32,10 @@ public class GuitarString {
 	public void pluck() throws IOException   
 	{
 		// set the buffer to white noise
-		System.out.println(ringBuffer.toString());
-		
 		for (int i = 0; i < ringBuffer.size(); i++)
 		{
 			ringBuffer.dequeue();
-			ringBuffer.enqueue((Math.random() * (0.5 - (-0.5) + 1)) + (-0.5));
+			ringBuffer.enqueue(Math.round((Math.random() - 0.5) * 100.0) / 100.0);
 		}
 		
 		System.out.println(ringBuffer.toString());
@@ -40,7 +45,7 @@ public class GuitarString {
 	{
 		// advance the simulation one time step
 		double item1 = ringBuffer.dequeue();
-		double item2 = ringBuffer.dequeue();
+		double item2 = ringBuffer.peek();
 		
 		double average = ((item1 + item2) / 2) * 0.994;
 		

@@ -127,7 +127,7 @@ public class RingBufferTester {
         else
             System.out.println("FAILED TEST 15"); 
         
-        // test 16
+        // test 16p
         System.out.print(rb.size() + " expect 4: ");
         if(rb.size() == 4)
             System.out.println("PASSED TEST 16");
