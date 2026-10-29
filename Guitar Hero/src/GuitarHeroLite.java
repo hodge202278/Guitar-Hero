@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /*****************************************************************************
  *  Compilation:  javac GuitarHeroLite.java
  *  Execution:    java  GuitarHeroLite
@@ -11,7 +13,7 @@
 
 public class GuitarHeroLite {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // Create two guitar strings, for concert A and C
         double CONCERT_A = 440.0;
@@ -27,7 +29,7 @@ public class GuitarHeroLite {
         play(stringA, stringC);
     }
     
-    private static void play(GuitarString stringA, GuitarString stringC) {        // the main input loop
+    private static void play(GuitarString stringA, GuitarString stringC) throws IOException {        // the main input loop
         while (true) {
             
             // check if the user has typed a key, and, if so, process it
