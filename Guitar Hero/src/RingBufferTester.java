@@ -1,6 +1,8 @@
+import java.io.*;
+
 public class RingBufferTester {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // test RingBuffer!!
         RingBuffer rb = new RingBuffer(4);
         // test 1
@@ -109,6 +111,9 @@ public class RingBufferTester {
             System.out.println("PASSED TEST 14");
         else
             System.out.println("FAILED TEST 14");    
+        
+        
+        System.out.print(rb.toString());
         
         rb.dequeue();
         rb.dequeue();
