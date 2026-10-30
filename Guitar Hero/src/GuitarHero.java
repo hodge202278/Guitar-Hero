@@ -6,46 +6,53 @@ public class GuitarHero {
 
 	        // Create two guitar strings, for concert A and C
 		 	String keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
-		 	
+		 	String[] keys = keyboard.split("");
 		 	GuitarString[] list = new GuitarString[keyboard.length()];
 		 	
 		 	double TEXT_POS_X = 0;
-		 	double TEXT_POS_Y = 0;
+		 	double TEXT_POS_Y = 1;
 		 	
-		 	for (int i = 0; i < keyboard.split("").length; i++)
+		 	for (int i = 0; i < keys.length; i++)
 		 	{
-		 		list[i] = new GuitarString(440 * Math.pow(1.05956, i-25));
-		 		StdDraw.text(TEXT_POS_X, TEXT_POS_Y + (i * 5), keyboard.split("")[i]);
+		 		list[i] = new GuitarString(440 * Math.pow(1.05956, i-24));
+		 		StdDraw.text(TEXT_POS_X + (i * 0.03), TEXT_POS_Y, keys[i]);
 		 	}
 	        
-	        play(list);
+	        play(list, keys);
 	    }
 	    
-	    private static void play(GuitarString[] string) throws IOException {        // the main input loop
+	    private static void play(GuitarString[] list, String[] keys) throws IOException {        // the main input loop
 	        while (true) {
-	            
-	            // check if the user has typed a key, and, if so, process it
-	            if (StdDraw.hasNextKeyTyped()) {
-	 
-	                // the user types this character
-	                char key = StdDraw.nextKeyTyped();
-
-	                // pluck the corresponding string
-	                if (key == 'a') 
-	                    stringA.pluck();
-	                else if (key == 'c') 
-	                    stringC.pluck();
-	            }
-
-	            // compute the superposition of the samples
-	            double sample = stringA.sample() + stringC.sample();
-
-	            // send the result to standard audio
-	            StdAudio.play(sample);
-
-	            // advance the simulation of each guitar string by one step
-	            stringA.tic();
-	            stringC.tic();
+	        	//double sample = 0;
+	        	if(StdDraw.hasNextKeyTyped())
+	        	{
+	        		char key = StdDraw.nextKeyTyped();
+		        	
+		        	for(int i = 0; i < keys.length; i++)
+		        	{
+		        		if(key == keys[i].charAt(0))
+		        		{
+		        			System.out.println(key);
+		        			list[i].pluck();
+		        			System.out.println(list[i]);
+		        		}
+		        		//sample+=list[i].sample();
+		        	}
+		            
+	        	}
+	        	
+	        	double sample = 0;
+	        	for(int i = 0; i < list.length; i++)
+	        	{
+	        		sample+=list[i].sample();
+	        		
+	        	}
+	        	StdAudio.play(sample);
+	        	
+	        	for(int i = 0; i < list.length; i++)
+	        	{
+	        		list[i].tic();
+	        	}
 	        }
 	        
 	    }
