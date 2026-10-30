@@ -37,8 +37,6 @@ public class GuitarString {
 			ringBuffer.dequeue();
 			ringBuffer.enqueue(Math.round((Math.random() - 0.5) * 100.0) / 100.0);
 		}
-		
-		System.out.println(ringBuffer.toString());
 	}
 	
 	public void tic() throws IOException     
