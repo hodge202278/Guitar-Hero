@@ -32,9 +32,7 @@ public class GuitarHero {
 		        	{
 		        		if(key == keys[i].charAt(0))
 		        		{
-		        			System.out.println(key);
 		        			list[i].pluck();
-		        			System.out.println(list[i]);
 		        		}
 		        		//sample+=list[i].sample();
 		        	}

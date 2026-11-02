@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.NoSuchElementException;
 
 public class RingBuffer {
 	
@@ -31,13 +32,13 @@ public class RingBuffer {
 		return (size == ringBuffer.length);
 		// is the buffer full  (size equals capacity)?
 	}
-	public void enqueue(double x) throws IOException
+	public void enqueue(double x) throws IllegalStateException
 	{
 		double temp;
 		
 		if (isFull())
 		{
-			throw new IOException("IllegalStateException");
+			throw new IllegalStateException();
 		}
 		
 		ringBuffer[tail] = x;
@@ -45,7 +46,7 @@ public class RingBuffer {
 		size++;
 		// add item x to the end (if not full)
 	}
-	public double dequeue() throws IOException
+	public double dequeue() throws NoSuchElementException
 	{
 		double temp;
 		
@@ -64,14 +65,14 @@ public class RingBuffer {
 			return temp;
 		}
 		
-		throw new IOException("NoSuchElementException");
+		throw new NoSuchElementException();
 		// delete and return item from the front (if not empty)
 	}
-	public double peek() throws IOException
+	public double peek() throws NoSuchElementException
 	{
 		if (isEmpty())
 		{
-			throw new IOException("NoSuchElementException");
+			throw new NoSuchElementException();
 		}
 		
 		return ringBuffer[head];
