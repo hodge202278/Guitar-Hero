@@ -8,31 +8,14 @@ public class GuitarHero {
 		 	String keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
 		 	String[] keys = keyboard.split("");
 		 	GuitarString[] list = new GuitarString[keyboard.length()];
-		 	StdDraw.setCanvasSize(1600,800);
+		 	
 		 	double TEXT_POS_X = 0;
 		 	double TEXT_POS_Y = 1;
-		 	
-		 	for(int i = 0; i < 10; i++)
-		 	{
-		 		StdDraw.rectangle(i*.02,.5,.02,.1);
-		 		if(i==1 || i==2 || i==3 || i==5 || i==6 || i==9 || i==8)
-		 		{
-		 			StdDraw.filledRectangle(i*.02, .55, .005, .05);
-		 		}
-		 	}
-		 	for(int i = 0; i < 10; i++)
-		 	{
-		 		StdDraw.rectangle(i*.02,.8,.02,.1);
-		 		if(i==0 || i==2 || i==3 || i==5 || i==6 || i==7 || i==9)
-		 		{
-		 			StdDraw.filledRectangle(i*.02, .85, .005, .05);
-		 		}
-		 		StdDraw.filledRectangle(.2, .85, .005, .05);
-		 	}
 		 	
 		 	for (int i = 0; i < keys.length; i++)
 		 	{
 		 		list[i] = new GuitarString(440 * Math.pow(1.05956, i-24));
+		 		StdDraw.text(TEXT_POS_X + (i * 0.03), TEXT_POS_Y, keys[i]);
 		 	}
 	        
 	        play(list, keys);
