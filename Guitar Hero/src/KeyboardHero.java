@@ -7,27 +7,25 @@ public class KeyboardHero {
 		String keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
 	 	String[] keys = keyboard.split("");
 	 	GuitarString[] list = new GuitarString[keyboard.length()];
-	 	StdDraw.setCanvasSize(1600,800);
-	 	double TEXT_POS_X = 0;
-	 	double TEXT_POS_Y = 1;
+	 	StdDraw.setCanvasSize(800,800);
 	 	
 	 	for(int i = 0; i < 10; i++)
 	 	{
-	 		StdDraw.rectangle((i+11)*.02,.2,.02,.1);
+	 		StdDraw.rectangle(.1+(i+11)*.04,.2,.04,.1);
 	 		if(i==1 || i==2 || i==3 || i==5 || i==6 || i==9 || i==8)
 	 		{
-	 			StdDraw.filledRectangle((i+11)*.02, .25, .005, .05);
+	 			StdDraw.filledRectangle(.1+(i+11)*.04, .25, .01, .05);
 	 		}
 	 	}
 	 	for(int i = 0; i < 10; i++)
 	 	{
-	 		StdDraw.rectangle(i*.02,.2,.02,.1);
+	 		StdDraw.rectangle(.1+i*.04,.2,.04,.1);
 	 		if(i==0 || i==2 || i==3 || i==5 || i==6 || i==7 || i==9)
 	 		{
-	 			StdDraw.filledRectangle(i*.02, .25, .005, .05);
+	 			StdDraw.filledRectangle(.1+i*.04, .25, .01, .05);
 	 		}
-	 		StdDraw.filledRectangle(.2, .25, .005, .05);
 	 	}
+	 	StdDraw.filledRectangle(.5, .25, .01, .05);
 	 	
 	 	for (int i = 0; i < keys.length; i++)
 	 	{
